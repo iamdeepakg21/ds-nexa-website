@@ -5,75 +5,65 @@ import { useInView } from "react-intersection-observer";
 
 const services = [
   {
-    category: "Core Development",
-    icon: "💻",
+    category: "Full Stack & E-commerce",
+    icon: "🛍️",
     items: [
       {
-        title: "Shopify Development",
-        desc: "Custom stores, theme dev, and integrations that convert.",
-        icon: "🛍️",
+        title: "Custom Shopify Apps & Pages",
+        desc: "High-conversion product pages, custom cart logic, and private Shopify apps built for high-scale D2C brands.",
+        icon: "📦",
       },
       {
-        title: "WordPress Development",
-        desc: "Stunning, high-performance WordPress sites & plugins.",
+        title: "WordPress to Headless",
+        desc: "Modernizing legacy WordPress sites with high-performance Headless CMS architectures.",
         icon: "📝",
       },
       {
-        title: "Next.js Full Stack Apps",
-        desc: "Blazing-fast, SEO-optimized web applications.",
+        title: "Next.js Web Applications",
+        desc: "Blazing-fast, SEO-optimized SaaS platforms and dashboards with edge runtime optimization.",
         icon: "⚡",
-      },
-      {
-        title: "Custom Web & Mobile Apps",
-        desc: "Native & cross-platform apps built for scale.",
-        icon: "📱",
       },
     ],
   },
   {
-    category: "Advanced Solutions",
+    category: "Advanced Intelligence",
     icon: "🧠",
     items: [
       {
-        title: "AI Integration",
-        desc: "Chatbots, GPT, computer vision, and AI-powered automation.",
+        title: "AI Workflows & LLMs",
+        desc: "Integrating OpenAI and custom LLM pipelines into your business logic to automate complex decision-making.",
         icon: "🤖",
       },
       {
-        title: "API Development",
-        desc: "Robust, scalable RESTful and GraphQL APIs.",
+        title: "Distributed Backend & APIs",
+        desc: "Robust, scalable REST/GraphQL APIs built with Go and Node.js for planet-scale traffic.",
         icon: "🔗",
       },
       {
-        title: "Business Automation",
-        desc: "End-to-end workflows that eliminate manual processes.",
+        title: "Intelligent Automation",
+        desc: "End-to-end business process automation that eliminates manual data entry and operational bottlenecks.",
         icon: "⚙️",
       },
     ],
   },
   {
-    category: "Growth & Optimization",
-    icon: "📈",
+    category: "Mobile & Infrastructure",
+    icon: "📱",
     items: [
       {
-        title: "SEO Optimization",
-        desc: "Data-driven SEO strategies that drive organic growth.",
-        icon: "🔍",
+        title: "React Native & Flutter",
+        desc: "Premium cross-platform mobile apps built from scratch to maintenance with native-level performance.",
+        icon: "📲",
       },
       {
-        title: "UI/UX Design",
-        desc: "Beautiful, intuitive interfaces users love.",
-        icon: "🎨",
+        title: "Cloud & DevOps (CI/CD)",
+        desc: "Automated deployment pipelines, Docker containerization, and Kubernetes orchestration.",
+        icon: "🐳",
       },
       {
-        title: "Performance Optimization",
-        desc: "Speed, core vitals, and conversion optimization.",
-        icon: "🚀",
-      },
-      {
-        title: "Ongoing Support",
-        desc: "Dedicated maintenance and continuous improvement.",
-        icon: "🛡️",
+        title: "Scalable Data Layers",
+        desc: "High-performance caching with Redis and distributed data storage with PostgreSQL & Cassandra.",
+        icon: "🐘",
       },
     ],
   },
@@ -81,7 +71,7 @@ const services = [
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } },
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const cardVariants = {
@@ -89,7 +79,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -108,16 +98,16 @@ export default function Services() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-badge">💻 What We Build</div>
+          <div className="section-badge">💻 Capabilities</div>
           <h2 className="section-title">
-            Services That <span className="text-gradient">Move the Needle</span>
+            Engineering <span className="text-gradient">Solutions for Tomorrow</span>
           </h2>
           <p className="section-subtitle">
-            From MVPs to enterprise-scale platforms — we deliver end-to-end solutions that drive real business impact.
+            From custom Shopify ecosystems to planet-scale distributed infrastructure — we deliver the stack that wins.
           </p>
         </motion.div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
           {services.map((group) => (
             <div key={group.category}>
               <motion.div
@@ -126,14 +116,14 @@ export default function Services() {
                 transition={{ duration: 0.5 }}
                 style={{
                   display: "flex", alignItems: "center", gap: "0.75rem",
-                  marginBottom: "1.25rem",
+                  marginBottom: "2rem",
                 }}
               >
                 <span style={{ fontSize: "1.25rem" }}>{group.icon}</span>
-                <h3 style={{ fontSize: "1.125rem", fontWeight: 600, color: "var(--text-primary)" }}>
+                <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--text-primary)" }}>
                   {group.category}
                 </h3>
-                <div style={{ flex: 1, height: 1, background: "var(--border-primary)" }} />
+                <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.05)" }} />
               </motion.div>
 
               <motion.div
@@ -142,8 +132,8 @@ export default function Services() {
                 animate={inView ? "visible" : "hidden"}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                  gap: "1rem",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                  gap: "1.5rem",
                 }}
               >
                 {group.items.map((service) => (
@@ -152,25 +142,25 @@ export default function Services() {
                     variants={cardVariants}
                     className="glass-card"
                     whileHover={{
-                      y: -6,
+                      y: -8,
                       borderColor: "var(--border-glow)",
-                      boxShadow: "var(--glow-combined)",
+                      boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
                     }}
-                    style={{ padding: "1.5rem", cursor: "default" }}
+                    style={{ padding: "2rem", cursor: "default", background: 'rgba(255,255,255,0.02)' }}
                   >
                     <div style={{
-                      width: 48, height: 48, borderRadius: "var(--radius-md)",
+                      width: 52, height: 52, borderRadius: "12px",
                       background: "var(--gradient-glow)",
                       border: "1px solid var(--border-glow)",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "1.25rem", marginBottom: "1rem",
+                      fontSize: "1.5rem", marginBottom: "1.5rem",
                     }}>
                       {service.icon}
                     </div>
-                    <h4 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "0.5rem", color: "var(--text-primary)" }}>
+                    <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.75rem", color: "var(--text-primary)" }}>
                       {service.title}
                     </h4>
-                    <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
                       {service.desc}
                     </p>
                   </motion.div>

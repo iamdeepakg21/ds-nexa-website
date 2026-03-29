@@ -122,7 +122,7 @@ export default function Hero() {
           {[
             { value: "50+", label: "Projects Delivered" },
             { value: "4.8×", label: "Avg. Client ROI" },
-            { value: "<6wk", label: "Typical Delivery" },
+            { value: "$50+", label: "Starting Per Hour" },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: "center" }}>
               <div className="text-gradient" style={{ fontSize: "1.5rem", fontWeight: 700 }}>
