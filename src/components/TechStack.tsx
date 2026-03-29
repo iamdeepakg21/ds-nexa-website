@@ -75,9 +75,7 @@ export default function TechStack() {
                   <div style={{ 
                     width: 24, height: 24, 
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    filter: 'brightness(0) invert(1)', // Force pure white
-                    opacity: 0.8
-                  }}>
+                  }} className="icon-adaptive">
                     <img 
                       src={`https://cdn.simpleicons.org/${tech.slug}`} 
                       alt={tech.name}
@@ -118,9 +116,7 @@ export default function TechStack() {
                   <div style={{ 
                     width: 24, height: 24, 
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    filter: 'brightness(0) invert(1)', // Force pure white
-                    opacity: 0.8
-                  }}>
+                  }} className="icon-adaptive">
                     <img 
                       src={`https://cdn.simpleicons.org/${tech.slug}`} 
                       alt={tech.name}
@@ -170,9 +166,8 @@ export default function TechStack() {
               style={{ padding: "1.5rem", textAlign: "left", position: "relative", overflow: "hidden" }}
             >
               <div style={{ 
-                width: 48, height: 48, marginBottom: "1rem", opacity: 0.9,
-                filter: 'brightness(0) invert(1)'
-              }}>
+                width: 48, height: 48, marginBottom: "1rem"
+              }} className="icon-adaptive">
                 <img 
                   src={`https://cdn.simpleicons.org/${feature.slug}`} 
                   alt={feature.title}
