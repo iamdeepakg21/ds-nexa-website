@@ -67,7 +67,7 @@ export default function Footer() {
               fontSize: "0.875rem", color: "var(--text-secondary)",
               lineHeight: 1.7, maxWidth: 300, marginBottom: "1.5rem",
             }}>
-              Engineering scalable digital universes — distributed systems, AI, and cinematic product experiences.
+              Engineering scalable digital universes — Contact us at contact@dsnexasolutions.co.in for premium software and AI solutions.
             </p>
             <motion.button
               className="btn-primary"

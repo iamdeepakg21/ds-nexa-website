@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const contactInfo = [
-  { icon: "📧", label: "Email", value: "hello@dsnexasolutions.com", href: "mailto:hello@dsnexasolutions.com" },
-  { icon: "📞", label: "Phone", value: "+91 98XXX XXXXX", href: "tel:+9198XXXXXXXX" },
+  { icon: "📧", label: "Email", value: "contact@dsnexasolutions.co.in", href: "mailto:contact@dsnexasolutions.co.in" },
+  { icon: "📞", label: "Phone", value: "+91 9110X XXXXX", href: "tel:+919110XXXXXX" }, // Updated with neutral placeholder
   { icon: "📍", label: "Location", value: "India • Serving Globally", href: "#" },
 ];
 
@@ -14,23 +14,57 @@ const socials = [
   { icon: "𝕏", label: "Twitter / X", href: "#" },
   { icon: "in", label: "LinkedIn", href: "#" },
   { icon: "📸", label: "Instagram", href: "#" },
-  { icon: "🐙", label: "GitHub", href: "#" },
+  { icon: "🐙", label: "GitHub", href: "https://github.com/iamdeepakg21" },
 ];
 
 export default function Contact() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [formState, setFormState] = useState({ name: "", email: "", project: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormState({ name: "", email: "", project: "", message: "" });
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "16a0b32e-7f66-421f-abc4-6b200e32a13d",
+          name: formState.name,
+          email: formState.email,
+          subject: `New Project Inquiry from ${formState.name}`,
+          project_type: formState.project,
+          message: formState.message,
+          from_name: "DS Nexa Website",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        setFormState({ name: "", email: "", project: "", message: "" });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        setError(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Failed to send message. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -68,6 +102,9 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {/* Anti-spam honeypot */}
+              <input type="checkbox" name="botcheck" style={{ display: "none" }} />
+              
               <div>
                 <label style={{ fontSize: "0.8125rem", fontWeight: 500, color: "var(--text-secondary)", display: "block", marginBottom: "0.375rem" }}>
                   Your Name
@@ -142,20 +179,39 @@ export default function Contact() {
                 className="btn-primary"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                style={{ width: "100%", justifyContent: "center", padding: "1rem", fontSize: "1rem", marginTop: "0.5rem" }}
+                disabled={isSubmitting}
+                style={{ width: "100%", justifyContent: "center", padding: "1rem", fontSize: "1rem", marginTop: "0.5rem", opacity: isSubmitting ? 0.7 : 1 }}
               >
-                {submitted ? "✅ Message Sent!" : "🚀 Send Message"}
+                {isSubmitting ? (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div className="spinner" style={{ width: 16, height: 16, border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                    Sending...
+                  </div>
+                ) : submitted ? "✅ Message Sent Successfully!" : "🚀 Send Message"}
               </motion.button>
 
-              {submitted && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  style={{ textAlign: "center", fontSize: "0.875rem", color: "var(--neon-cyan)" }}
-                >
-                  We&apos;ll get back to you within 24 hours!
-                </motion.p>
-              )}
+              <AnimatePresence>
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    style={{ textAlign: "center", fontSize: "0.875rem", color: "#f87171" }}
+                  >
+                    ❌ {error}
+                  </motion.p>
+                )}
+                {submitted && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    style={{ textAlign: "center", fontSize: "0.875rem", color: "var(--neon-cyan)" }}
+                  >
+                    Success! We&apos;ll get back to you within 24 hours.
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </form>
           </motion.div>
 
@@ -248,6 +304,11 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 }
