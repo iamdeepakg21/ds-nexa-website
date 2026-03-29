@@ -118,18 +118,16 @@ export default function Projects() {
                 y: -8,
                 rotateX: 1,
                 rotateY: -1,
-                boxShadow: "0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(0, 240, 255, 0.1)",
+                boxShadow: "var(--glow-combined)",
               }}
               style={{
                 cursor: "pointer",
                 overflow: "hidden",
                 perspective: 1000,
-                background: "rgba(15, 23, 42, 0.4)",
               }}
             >
               <div style={{
                 height: 200,
-                background: "var(--bg-card)",
                 backgroundImage: `url(${project.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -137,7 +135,8 @@ export default function Projects() {
               }}>
                 <div style={{
                   position: "absolute", inset: 0,
-                  background: "linear-gradient(to bottom, transparent 40%, rgba(15, 23, 42, 0.9) 100%)",
+                  background: "linear-gradient(to bottom, transparent 40%, var(--bg-primary) 100%)",
+                  opacity: 0.9
                 }} />
                 {/* Visual indicator for the preview button */}
                 <div style={{
@@ -151,7 +150,7 @@ export default function Projects() {
                 </div>
                 <div style={{
                   position: "absolute", bottom: 12, right: 16,
-                  background: "rgba(0,0,0,0.4)",
+                  background: "rgba(0,0,0,0.5)",
                   backdropFilter: "blur(8px)",
                   padding: "0.25rem 0.75rem",
                   borderRadius: "var(--radius-full)",
@@ -168,17 +167,18 @@ export default function Projects() {
                 }}>
                   <span style={{
                     fontSize: "0.65rem", fontWeight: 700, color: "var(--neon-cyan)",
-                    background: "rgba(0, 240, 255, 0.08)",
+                    background: "var(--badge-bg)",
                     padding: "0.2rem 0.6rem",
                     borderRadius: "4px",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
+                    border: "1px solid var(--badge-border)",
                   }}>
                     {project.category}
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 800, marginBottom: "0.25rem" }}>
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 800, marginBottom: "0.25rem", color: "var(--text-primary)" }}>
                   {project.title}
                 </h3>
                 <p style={{
@@ -194,7 +194,7 @@ export default function Projects() {
                   {project.tech.map((t) => (
                     <span key={t} style={{
                       fontSize: "0.65rem", color: "var(--text-tertiary)",
-                      background: "rgba(255,255,255,0.03)",
+                      background: "var(--bg-tertiary)",
                       padding: "0.25rem 0.5rem",
                       borderRadius: "4px",
                       border: "1px solid var(--border-primary)",
@@ -217,7 +217,7 @@ export default function Projects() {
                     style={{ 
                       fontSize: "0.85rem", fontWeight: 700, textDecoration: "none",
                       padding: '0.6rem 1.25rem', background: 'var(--gradient-primary)',
-                      borderRadius: 'var(--radius-md)', color: '#000',
+                      borderRadius: 'var(--radius-md)', color: 'var(--on-gradient)',
                       flex: 1, textAlign: 'center'
                     }} 
                     className="hover:opacity-90 transition-opacity"
@@ -240,7 +240,7 @@ export default function Projects() {
             onClick={() => setSelected(null)}
             style={{
               position: "fixed", inset: 0, zIndex: 100,
-              background: "rgba(2, 6, 23, 0.92)",
+              background: "var(--overlay-scrim)",
               backdropFilter: "blur(16px)",
               display: "flex", alignItems: "center", justifyContent: "center",
               padding: "2rem",
@@ -255,18 +255,18 @@ export default function Projects() {
                 width: "100%", maxWidth: 850, maxHeight: "90vh",
                 background: "var(--bg-secondary)", borderRadius: "var(--radius-xl)",
                 border: "1px solid var(--border-primary)",
-                boxShadow: '0 0 50px rgba(0,0,0,0.5)',
+                boxShadow: 'var(--glass-shadow)',
                 overflow: "hidden", display: 'flex', flexDirection: 'column'
               }}
             >
               <div style={{ height: 320, backgroundImage: `url(${selected.image})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, var(--bg-secondary))' }} />
-                 <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: 20, right: 20, background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', borderRadius: '50%', width: 44, height: 44, cursor: 'pointer', zIndex: 10 }}>✕</button>
+                 <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: 20, right: 20, background: 'var(--overlay-scrim)', border: 'none', color: '#fff', borderRadius: '50%', width: 44, height: 44, cursor: 'pointer', zIndex: 10 }}>✕</button>
               </div>
               <div style={{ padding: "3rem", overflowY: 'auto' }}>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem'}}>
                   <div>
-                    <h2 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>{selected.title}</h2>
+                    <h2 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1, color: "var(--text-primary)" }}>{selected.title}</h2>
                     <p style={{ color: "var(--text-secondary)", marginTop: "1rem", lineHeight: 1.8, fontSize: '1.05rem', maxWidth: 480 }}>{selected.problem}</p>
                   </div>
                   <a 
@@ -274,7 +274,7 @@ export default function Projects() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     style={{ 
-                      padding: '1rem 2rem', background: '#fff', color: '#000', borderRadius: 'var(--radius-full)',
+                      padding: '1rem 2rem', background: 'var(--accent)', color: 'var(--bg-primary)', borderRadius: 'var(--radius-full)',
                       fontWeight: 800, fontSize: '1rem', textDecoration: 'none', whiteSpace: 'nowrap'
                     }}
                     className="hover:scale-105 transition-transform"
@@ -293,12 +293,12 @@ export default function Projects() {
                       <h4 style={{ color: "var(--text-tertiary)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "2px", fontWeight: 700, marginBottom: '1rem' }}>Technology Stack</h4>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                         {selected.tech.map(t => (
-                          <span key={t} style={{ padding: '0.4rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '6px', fontSize: '0.8rem' }}>{t}</span>
+                          <span key={t} style={{ padding: '0.4rem 0.8rem', background: 'var(--bg-tertiary)', borderRadius: '6px', fontSize: '0.8rem', color: "var(--text-secondary)", border: "1px solid var(--border-primary)" }}>{t}</span>
                         ))}
                       </div>
                     </div>
                   </div>
-                  <div style={{ background: "rgba(0, 240, 255, 0.05)", padding: "2.5rem", borderRadius: "20px", border: '1px solid rgba(0, 240, 255, 0.1)' }}>
+                  <div style={{ background: "var(--accent-subtle)", padding: "2.5rem", borderRadius: "20px", border: '1px solid var(--border-primary)' }}>
                     <h4 style={{ color: "var(--neon-magenta)", textTransform: "uppercase", fontSize: "0.8rem", letterSpacing: "3px", fontWeight: 800, marginBottom: '1rem' }}>Business Impact</h4>
                     <div style={{ fontSize: "2.5rem", fontWeight: 900, marginBottom: '0.5rem' }} className="text-gradient">{selected.metrics.primary} {selected.metrics.label}</div>
                     <p style={{ fontSize: "1rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>{selected.result}</p>

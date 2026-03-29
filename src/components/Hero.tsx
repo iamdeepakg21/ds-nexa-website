@@ -50,7 +50,7 @@ export default function Hero() {
           <img 
             src="/brand/logo.png" 
             alt="DS Nexa Solutions Logo" 
-            style={{ height: "180px", width: "auto", margin: "0 auto" }} 
+            style={{ height: "100px", width: "auto", margin: "0 auto" }} 
           />
         </motion.div>
 

@@ -59,7 +59,7 @@ export default function Footer() {
               <img 
                 src="/brand/logo.png" 
                 alt="DS Nexa Solutions Logo" 
-                style={{ height: "240px", width: "auto" }} 
+                style={{ height: "100px", width: "auto" }} 
               />
             </div>
             <p style={{
