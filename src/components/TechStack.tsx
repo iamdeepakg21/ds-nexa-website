@@ -4,24 +4,24 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const techStack = [
-  { name: "Next.js", icon: "▲" },
-  { name: "React", icon: "⚛️" },
-  { name: "Node.js", icon: "🟢" },
-  { name: "Go", icon: "🔵" },
-  { name: "Kubernetes", icon: "☸️" },
-  { name: "Kafka", icon: "📨" },
-  { name: "PostgreSQL", icon: "🐘" },
-  { name: "Cassandra", icon: "⬡" },
-  { name: "OpenAI", icon: "🧠" },
-  { name: "Tailwind", icon: "🎨" },
-  { name: "Three.js", icon: "🌐" },
-  { name: "TypeScript", icon: "📘" },
-  { name: "Docker", icon: "🐳" },
-  { name: "Redis", icon: "🏮" },
-  { name: "Shopify", icon: "🛍️" },
-  { name: "WordPress", icon: "📝" },
-  { name: "CI/CD", icon: "🚀" },
-  { name: "AI Workflows", icon: "⚙️" },
+  { name: "Next.js", slug: "nextdotjs" },
+  { name: "React", slug: "react" },
+  { name: "Python", slug: "python" },
+  { name: "Django", slug: "django" },
+  { name: "Go", slug: "go" },
+  { name: "Node.js", slug: "nodedotjs" },
+  { name: "Kubernetes", slug: "kubernetes" },
+  { name: "Docker", slug: "docker" },
+  { name: "PostgreSQL", slug: "postgresql" },
+  { name: "Redis", slug: "redis" },
+  { name: "Kafka", slug: "apachekafka" },
+  { name: "n8n", slug: "n8n" },
+  { name: "Flask", slug: "flask" },
+  { name: "OpenAI", slug: "openai" },
+  { name: "TypeScript", slug: "typescript" },
+  { name: "Tailwind", slug: "tailwindcss" },
+  { name: "Shopify", slug: "shopify" },
+  { name: "GitHub", slug: "github" },
 ];
 
 export default function TechStack() {
@@ -44,7 +44,7 @@ export default function TechStack() {
             Built for <span className="text-gradient">Planet Scale</span>
           </h2>
           <p className="section-subtitle" style={{ maxWidth: 700, margin: "0 auto" }}>
-            From edge runtimes to streaming pipelines and replicated data — the same primitives we visualize in the hero.
+            From edge runtimes to streaming pipelines and replicated data — we use the industry standards for engineering excellence.
           </p>
         </motion.div>
 
@@ -53,27 +53,39 @@ export default function TechStack() {
           {/* Top Row: Left to Right */}
           <div style={{ display: "flex", width: "fit-content", gap: "1rem", overflow: "hidden" }}>
             <motion.div
-              animate={{ x: [0, -1000] }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              animate={{ x: [0, -2000] }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
               style={{ display: "flex", gap: "1rem" }}
             >
-              {[...techStack, ...techStack].map((tech, i) => (
+              {[...techStack, ...techStack, ...techStack].map((tech, i) => (
                 <div
                   key={`${tech.name}-${i}`}
                   className="glass-card"
                   style={{
-                    padding: "1rem 2rem",
+                    padding: "1rem 1.5rem",
                     display: "flex",
                     alignItems: "center",
-                    gap: "1rem",
+                    gap: "0.85rem",
                     minWidth: 160,
                     backdropFilter: "blur(12px)",
                     border: "1px solid var(--border-primary)",
                     borderRadius: "var(--radius-lg)",
                   }}
                 >
-                  <span style={{ fontSize: "1.5rem" }}>{tech.icon}</span>
-                  <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--text-primary)" }}>
+                  <div style={{ 
+                    width: 24, height: 24, 
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    filter: 'brightness(0) invert(1)', // Force pure white
+                    opacity: 0.8
+                  }}>
+                    <img 
+                      src={`https://cdn.simpleicons.org/${tech.slug}`} 
+                      alt={tech.name}
+                      style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+                      loading="lazy"
+                    />
+                  </div>
+                  <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-primary)" }}>
                     {tech.name}
                   </span>
                 </div>
@@ -84,27 +96,39 @@ export default function TechStack() {
           {/* Bottom Row: Right to Left */}
           <div style={{ display: "flex", width: "fit-content", gap: "1rem", overflow: "hidden", marginTop: "1rem" }}>
             <motion.div
-              animate={{ x: [-1000, 0] }}
-              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              animate={{ x: [-2000, 0] }}
+              transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
               style={{ display: "flex", gap: "1rem" }}
             >
-              {[...techStack, ...techStack].reverse().map((tech, i) => (
+              {[...techStack, ...techStack, ...techStack].reverse().map((tech, i) => (
                 <div
                   key={`${tech.name}-reverse-${i}`}
                   className="glass-card"
                   style={{
-                    padding: "1rem 2rem",
+                    padding: "1rem 1.5rem",
                     display: "flex",
                     alignItems: "center",
-                    gap: "1rem",
+                    gap: "0.85rem",
                     minWidth: 160,
                     backdropFilter: "blur(12px)",
                     border: "1px solid var(--border-primary)",
                     borderRadius: "var(--radius-lg)",
                   }}
                 >
-                  <span style={{ fontSize: "1.5rem" }}>{tech.icon}</span>
-                  <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--text-primary)" }}>
+                  <div style={{ 
+                    width: 24, height: 24, 
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    filter: 'brightness(0) invert(1)', // Force pure white
+                    opacity: 0.8
+                  }}>
+                    <img 
+                      src={`https://cdn.simpleicons.org/${tech.slug}`} 
+                      alt={tech.name}
+                      style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+                      loading="lazy"
+                    />
+                  </div>
+                  <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-primary)" }}>
                     {tech.name}
                   </span>
                 </div>
@@ -116,7 +140,7 @@ export default function TechStack() {
         {/* Feature Grid below for depth */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "1.5rem",
           marginTop: "4rem",
         }}>
@@ -124,17 +148,17 @@ export default function TechStack() {
             {
               title: "Edge Runtimes",
               desc: "Deploy logic globally with sub-millisecond cold starts using Next.js Edge and Go.",
-              icon: "⚡",
+              slug: "vercel",
             },
             {
               title: "AI Workflows",
               desc: "Native OpenAI and LLM integration for intelligent automation and data pipelines.",
-              icon: "🧠",
+              slug: "openai",
             },
             {
-              title: "Planet-Scale Data",
-              desc: "Replicated PostgreSQL, Cassandra, and Redis for high-availability distributed storage.",
-              icon: "🐘",
+              title: "Scale Automations",
+              desc: "Complex multi-step orchestrations with n8n and Python for business efficiency.",
+              slug: "n8n",
             },
           ].map((feature, i) => (
             <motion.div
@@ -145,9 +169,18 @@ export default function TechStack() {
               className="glass-card"
               style={{ padding: "1.5rem", textAlign: "left", position: "relative", overflow: "hidden" }}
             >
-              <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>{feature.icon}</div>
-              <h3 style={{ fontSize: "1.1rem", fontWeight: 600, marginBottom: "0.5rem" }}>{feature.title}</h3>
-              <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>{feature.desc}</p>
+              <div style={{ 
+                width: 48, height: 48, marginBottom: "1rem", opacity: 0.9,
+                filter: 'brightness(0) invert(1)'
+              }}>
+                <img 
+                  src={`https://cdn.simpleicons.org/${feature.slug}`} 
+                  alt={feature.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
+              </div>
+              <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>{feature.title}</h3>
+              <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>{feature.desc}</p>
               <div style={{
                 position: "absolute", bottom: 0, right: 0, width: 60, height: 60,
                 background: "var(--gradient-primary)", filter: "blur(40px)", opacity: 0.1,
