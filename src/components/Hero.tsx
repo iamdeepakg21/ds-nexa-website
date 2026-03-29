@@ -61,10 +61,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           style={{ maxWidth: 900, margin: "0 auto 1.5rem" }}
         >
-          We Build{" "}
-          <span className="text-shimmer">Future-Ready</span>
+          Engineering <span className="text-shimmer">Scalable</span>
           <br />
-          Software & AI Solutions
+          Digital Universes & AI
         </motion.h1>
 
         <motion.p

@@ -13,6 +13,7 @@ const projects = [
     category: "Software Engineering",
     gradient: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
     image: "/projects/aquatrax.png",
+    alt: "AquaTrax Solutions - High-scale infrastructure and AI dashboard preview",
     problem: "Need for a high-performance, scalable tech presence with integrated AI tools.",
     solution: "End-to-end architecture design from edge runtimes to streaming pipelines and replicated data.",
     result: "Global reach with sub-50ms latency for distributed users.",
@@ -27,6 +28,7 @@ const projects = [
     category: "E-commerce",
     gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
     image: "/projects/shopify_mockups.png",
+    alt: "Tanntrim - Premium leather goods Shopify store mockup",
     problem: "Seeking a luxury shopping experience for upscale leather goods.",
     solution: "Custom Shopify development with high-fidelity UI/UX and optimized conversion paths.",
     result: "Significant increase in average order value and luxury brand perception.",
@@ -41,6 +43,7 @@ const projects = [
     category: "Shopify / E-comm",
     gradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
     image: "/projects/shopify_mockups.png",
+    alt: "Opulence - Luxury fashion hub headless Shopify storefront",
     problem: "High abandonment rates on generic Shopify themes.",
     solution: "Completely custom-built headless storefront for maximum speed and creative freedom.",
     result: "60% faster page loads compared to previous theme.",
@@ -55,6 +58,7 @@ const projects = [
     category: "D2C Brands",
     gradient: "linear-gradient(135deg, #ec4899 0%, #db2777 100%)",
     image: "/projects/shopify_mockups.png",
+    alt: "Tweedle - Premium carry essentials e-commerce shop",
     problem: "Need for a unique brand identity in a crowded carry-goods market.",
     solution: "Art-directed e-commerce experience with custom interactions and seamless checkout.",
     result: "Rapid growth in the D2C space with loyal customer base.",
@@ -69,6 +73,7 @@ const projects = [
     category: "Retail Tech",
     gradient: "linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%)",
     image: "/projects/shopify_mockups.png",
+    alt: "Slant Essentials - Minimalist retail tech product design showcase",
     problem: "Traditional retail UI failing to reflect minimalist product values.",
     solution: "A 'less-is-more' design philosophy implemented through custom Shopify sections.",
     result: "Perfect alignment between product design and digital storefront.",
@@ -132,7 +137,7 @@ export default function Projects() {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 position: "relative",
-              }}>
+              }} role="img" aria-label={project.alt}>
                 <div style={{
                   position: "absolute", inset: 0,
                   background: "linear-gradient(to bottom, transparent 40%, var(--bg-primary) 100%)",
@@ -221,6 +226,7 @@ export default function Projects() {
                       flex: 1, textAlign: 'center', boxShadow: '0 4px 12px rgba(34, 211, 238, 0.2)'
                     }} 
                     className="hover:scale-[1.03] active:scale-[0.98] transition-all"
+                    aria-label={`Visit ${project.title} live website`}
                   >
                     Visit Site ↗
                   </a>
@@ -258,15 +264,18 @@ export default function Projects() {
                 boxShadow: 'var(--glass-shadow)',
                 overflow: "hidden", display: 'flex', flexDirection: 'column'
               }}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-title"
             >
-              <div style={{ height: 320, backgroundImage: `url(${selected.image})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+              <div style={{ height: 320, backgroundImage: `url(${selected.image})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }} role="img" aria-label={selected.alt}>
                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, var(--bg-secondary))' }} />
-                 <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: 20, right: 20, background: 'var(--overlay-scrim)', border: 'none', color: '#fff', borderRadius: '50%', width: 44, height: 44, cursor: 'pointer', zIndex: 10 }}>✕</button>
+                 <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: 20, right: 20, background: 'var(--overlay-scrim)', border: 'none', color: '#fff', borderRadius: '50%', width: 44, height: 44, cursor: 'pointer', zIndex: 10 }} aria-label="Close modal">✕</button>
               </div>
               <div style={{ padding: "3rem", overflowY: 'auto' }}>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem'}}>
                   <div>
-                    <h2 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1, color: "var(--text-primary)" }}>{selected.title}</h2>
+                    <h2 id="modal-title" style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1, color: "var(--text-primary)" }}>{selected.title}</h2>
                     <p style={{ color: "var(--text-secondary)", marginTop: "1rem", lineHeight: 1.8, fontSize: '1.05rem', maxWidth: 480 }}>{selected.problem}</p>
                   </div>
                   <a 
@@ -279,6 +288,7 @@ export default function Projects() {
                       boxShadow: '0 8px 24px rgba(34, 211, 238, 0.2)'
                     }}
                     className="hover:scale-105 active:scale-95 transition-all"
+                    aria-label={`Open ${selected.title} in new tab`}
                   >
                     Open Live Site ↗
                   </a>

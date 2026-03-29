@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import JsonLd from "@/components/JsonLd";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,36 +16,65 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Ds Nexa Solutions | Engineering Scalable Digital Universes",
+  metadataBase: new URL("https://dsnexasolutions.co.in"),
+  title: {
+    default: "Ds Nexa Solutions | Engineering Scalable Digital Universes",
+    template: "%s | Ds Nexa Solutions",
+  },
   description:
-    "Premium software studio — distributed systems, AI integrations, and immersive product engineering. Next.js, cloud-native backends, and cinematic interfaces.",
+    "Premium software studio specializing in high-scale distributed systems, AI integrations, custom Shopify apps, and immersive product engineering. We build for the future with Next.js, Go, and cloud-native architecture.",
   keywords: [
-    "software development agency",
+    "software development India",
+    "custom software engineering",
+    "Shopify experts",
+    "AI development agency",
     "distributed systems",
-    "Next.js",
-    "AI solutions",
-    "Kubernetes",
-    "microservices",
+    "Next.js agency",
+    "SaaS product development",
     "Ds Nexa Solutions",
+    "scalable architecture",
+    "high-performance web apps",
   ],
-  authors: [{ name: "Ds Nexa Solutions" }],
+  authors: [{ name: "Ds Nexa Solutions", url: "https://dsnexasolutions.co.in" }],
+  creator: "Ds Nexa Solutions",
+  publisher: "Ds Nexa Solutions",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Ds Nexa Solutions | Engineering Scalable Digital Universes",
     description:
-      "Premium software studio — distributed systems, AI integrations, and immersive product engineering.",
-    type: "website",
-    locale: "en_US",
+      "Premium software studio — high-scale distributed systems, AI integrations, and immersive product engineering.",
+    url: "https://dsnexasolutions.co.in",
     siteName: "Ds Nexa Solutions",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ds Nexa Solutions Branding",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ds Nexa Solutions | Engineering Scalable Digital Universes",
     description:
-      "Premium software studio — distributed systems, AI integrations, and immersive product engineering.",
+      "Premium software studio — high-scale distributed systems, AI integrations, and immersive product engineering.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: "/favicon.png",
@@ -67,7 +97,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>{children}</body>
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <JsonLd />
+        {children}
+      </body>
     </html>
   );
 }
