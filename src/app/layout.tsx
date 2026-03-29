@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+// DS Nexa Solutions - Premium Engineering Platform
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import "./globals.css";
