@@ -68,6 +68,7 @@ export default function Navbar() {
             <img 
               src="/brand/logo.png" 
               alt="DS Nexa Solutions Logo" 
+              className="logo-adaptive"
               style={{ height: "64px", width: "auto" }} 
             />
           </motion.a>
