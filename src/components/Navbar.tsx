@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -14,6 +16,9 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -33,6 +38,12 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     setMobileOpen(false);
+    
+    if (pathname !== "/") {
+      router.push("/" + href);
+      return;
+    }
+
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -59,19 +70,19 @@ export default function Navbar() {
       >
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           {/* Logo */}
-          <motion.a
-            href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          <Link
+            href="/"
             style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
-            whileHover={{ scale: 1.02 }}
           >
-            <img 
-              src="/brand/logo.png" 
-              alt="DS Nexa Solutions Logo" 
-              className="logo-adaptive"
-              style={{ height: "85px", width: "auto" }} 
-            />
-          </motion.a>
+            <motion.div whileHover={{ scale: 1.02 }}>
+              <img 
+                src="/brand/logo.png" 
+                alt="DS Nexa Solutions Logo" 
+                className="logo-adaptive"
+                style={{ height: "85px", width: "auto" }} 
+              />
+            </motion.div>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hide-mobile" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>

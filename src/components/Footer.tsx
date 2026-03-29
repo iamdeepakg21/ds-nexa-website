@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const footerLinks = {
   Services: [
@@ -22,14 +23,22 @@ const footerLinks = {
     { label: "Case Studies", href: "#projects" },
     { label: "Free AI Audit", href: "#contact" },
     { label: "Book Consultation", href: "#contact" },
-    { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
   ],
 };
 
 export default function Footer() {
+  const pathname = usePathname();
+  const router = useRouter();
+
   const scrollTo = (href: string) => {
     if (href === "#") return;
+    
+    if (pathname !== "/") {
+      router.push("/" + href);
+      return;
+    }
+
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
