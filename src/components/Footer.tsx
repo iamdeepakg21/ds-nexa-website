@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const footerLinks = {
   Services: [
@@ -126,13 +127,13 @@ export default function Footer() {
             © {new Date().getFullYear()} DS Nexa Solutions. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: "1.5rem" }}>
-            <button
-              onClick={() => scrollTo("#")}
+            <Link
+              href="/privacy"
               className="footer-link"
               style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
             >
               Privacy Policy
-            </button>
+            </Link>
             <button
               onClick={() => scrollTo("#")}
               className="footer-link"
