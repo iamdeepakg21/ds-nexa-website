@@ -216,13 +216,13 @@ export default function Projects() {
                     onClick={(e) => e.stopPropagation()}
                     style={{ 
                       fontSize: "0.85rem", fontWeight: 700, textDecoration: "none",
-                      padding: '0.6rem 1.25rem', background: 'var(--gradient-primary)',
-                      borderRadius: 'var(--radius-md)', color: 'var(--on-gradient)',
-                      flex: 1, textAlign: 'center'
+                      padding: '0.65rem 1.25rem', background: 'var(--gradient-secondary)',
+                      borderRadius: 'var(--radius-full)', color: '#fff',
+                      flex: 1, textAlign: 'center', boxShadow: '0 4px 12px rgba(34, 211, 238, 0.2)'
                     }} 
-                    className="hover:opacity-90 transition-opacity"
+                    className="hover:scale-[1.03] active:scale-[0.98] transition-all"
                   >
-                    Open Live Site ↗
+                    Visit Site ↗
                   </a>
                 </div>
               </div>
@@ -274,12 +274,13 @@ export default function Projects() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     style={{ 
-                      padding: '1rem 2rem', background: 'var(--accent)', color: 'var(--bg-primary)', borderRadius: 'var(--radius-full)',
-                      fontWeight: 800, fontSize: '1rem', textDecoration: 'none', whiteSpace: 'nowrap'
+                      padding: '1rem 2rem', background: 'var(--gradient-secondary)', color: '#fff', borderRadius: 'var(--radius-full)',
+                      fontWeight: 800, fontSize: '1rem', textDecoration: 'none', whiteSpace: 'nowrap',
+                      boxShadow: '0 8px 24px rgba(34, 211, 238, 0.2)'
                     }}
-                    className="hover:scale-105 transition-transform"
+                    className="hover:scale-105 active:scale-95 transition-all"
                   >
-                    Launch Live Site ↗
+                    Open Live Site ↗
                   </a>
                 </div>
 
