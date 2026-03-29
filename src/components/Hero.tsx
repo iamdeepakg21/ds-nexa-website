@@ -23,7 +23,7 @@ export default function Hero() {
         position: "relative",
         minHeight: "100vh",
         display: "flex",
-        alignItems: "center",
+        alignItems: "flex-start",
         justifyContent: "center",
         overflow: "hidden",
       }}
@@ -40,7 +40,16 @@ export default function Hero() {
         background: "linear-gradient(to top, var(--bg-primary) 0%, transparent 100%)",
       }} />
 
-      <div className="container" style={{ position: "relative", zIndex: 2, textAlign: "center", paddingTop: "6rem", paddingBottom: "4rem" }}>
+      <div 
+        className="container" 
+        style={{ 
+          position: "relative", 
+          zIndex: 2, 
+          textAlign: "center", 
+          paddingTop: "clamp(8rem, 20vh, 12rem)", 
+          paddingBottom: "4rem" 
+        }}
+      >
 
 
         <motion.div
