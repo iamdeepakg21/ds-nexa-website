@@ -14,8 +14,10 @@ export default function JsonLd() {
     "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Ahmedabad",
-      "addressRegion": "Gujarat",
+      "streetAddress": "Advant Navis Business Park, Sector 142, Plot No. 7",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201305",
       "addressCountry": "IN"
     },
     "founder": {

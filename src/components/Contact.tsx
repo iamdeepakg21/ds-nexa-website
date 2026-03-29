@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 const contactInfo = [
   { icon: "📧", label: "Email", value: "contact@dsnexasolutions.co.in", href: "mailto:contact@dsnexasolutions.co.in" },
   { icon: "📞", label: "Phone", value: "+91 80526 40777 | +91 77048 87884", href: "tel:+918052640777" },
-  { icon: "📍", label: "Location", value: "India • Serving Globally", href: "#" },
+  { icon: "📍", label: "Location", value: "Advant Navis Business Park, Sector 142, Noida, 201305", href: "https://maps.google.com/?q=Advant+Navis+Business+Park+Sector+142+Noida" },
 ];
 
 const socials = [

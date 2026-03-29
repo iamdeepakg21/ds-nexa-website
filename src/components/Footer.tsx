@@ -13,7 +13,7 @@ const footerLinks = {
     { label: "Business Automation", href: "#services" },
   ],
   Company: [
-    { label: "About Us", href: "#" },
+    { label: "About Us", href: "/about" },
     { label: "Our Process", href: "#process" },
     { label: "Portfolio", href: "#projects" },
     { label: "Blog", href: "#" },
@@ -23,7 +23,7 @@ const footerLinks = {
     { label: "Case Studies", href: "#projects" },
     { label: "Free AI Audit", href: "#contact" },
     { label: "Book Consultation", href: "#contact" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Terms of Service", href: "/terms" },
   ],
 };
 
