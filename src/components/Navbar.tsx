@@ -65,12 +65,7 @@ export default function Navbar() {
             style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
             whileHover={{ scale: 1.02 }}
           >
-            <img 
-              src="/brand/logo.png" 
-              alt="DS Nexa Solutions Logo" 
-              className="logo-adaptive"
-              style={{ height: "64px", width: "auto" }} 
-            />
+            {/* Logo removed to avoid redundancy with Hero logo */}
           </motion.a>
 
           {/* Desktop Links */}
