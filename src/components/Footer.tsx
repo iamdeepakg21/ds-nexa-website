@@ -34,6 +34,11 @@ export default function Footer() {
   const scrollTo = (href: string) => {
     if (href === "#") return;
     
+    if (href.startsWith("/")) {
+      router.push(href);
+      return;
+    }
+    
     if (pathname !== "/") {
       router.push("/" + href);
       return;
