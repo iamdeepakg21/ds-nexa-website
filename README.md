@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DS Nexa Solutions | Engineering Scalable Digital Universes
 
-## Getting Started
+[![Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)](https://dsnexasolutions.co.in)
+[![Next.js](https://img.shields.io/badge/Next.js-15+-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
 
-First, run the development server:
+A high-performance, premium studio landing page built for **DS Nexa Solutions**. This project showcases high-scale engineering capabilities with a cinematic, "Apple-style" minimalist aesthetic, full SEO optimization, and seamless contact integration.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **💎 Premium UI/UX**: Immersive glassmorphism design system using Tailwind 4 and Framer Motion.
+- **🌐 Full SEO Integration**: 
+  - Dynamic `sitemap.xml` and `robots.txt` generation.
+  - JSON-LD Structured Data for "ProfessionalService" search results.
+  - Canonical URL management for `dsnexasolutions.co.in`.
+- **📨 Lead Generation**:
+  - Integrated **Web3Forms** with real-time AJAX submission.
+  - Honeypot anti-spam protection.
+  - Automatic email forwarding via Cloudflare.
+- **🌓 Theme-Aware Branding**: Custom CSS-filtered logo adapter that toggles branding colors intelligently between Light and Dark modes.
+- **📈 Tech Stack Showcase**: Interactive, logo-based technology marquee featuring Next.js, Go, Python, n8n, and more.
+- **⚖️ Built-in Privacy**: Dedicated, human-readable Privacy Policy page compliant with modern standards.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Stack
 
-## Learn More
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) & Vanilla CSS Variables
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Visuals**: [Three.js](https://threejs.org/) / WebGL Backgrounds
+- **Forms**: [Web3Forms](https://web3forms.com/)
+- **Icons**: [Simple Icons](https://simpleicons.org/)
 
-To learn more about Next.js, take a look at the following resources:
+## 🏁 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Node.js 20+
+- npm / pnpm / yarn
 
-## Deploy on Vercel
+### Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/iamdeepakg21/ds-nexa-website.git
+   cd ds-nexa-website
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup:**
+   Create a `.env.local` and add your Web3Forms Access Key:
+   ```env
+   NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_key_here
+   ```
+
+4. **Run development server:**
+   ```bash
+   npm run dev
+   ```
+
+## 🚢 Deployment
+
+This project is optimized for **Vercel**. 
+
+- **Production URL**: [https://dsnexasolutions.co.in](https://dsnexasolutions.co.in)
+- **CI/CD**: Automatic deployments on every `git push` to the `main` branch.
+
+## 📄 License
+
+© 2026 DS Nexa Solutions. All rights reserved. Built with engineering excellence.
