@@ -44,6 +44,19 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          style={{ marginBottom: "2rem" }}
+        >
+          <img 
+            src="/brand/logo.png" 
+            alt="DS Nexa Solutions Logo" 
+            style={{ height: "180px", width: "auto", margin: "0 auto" }} 
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="section-badge" style={{ margin: "0 auto 1.5rem" }}>
