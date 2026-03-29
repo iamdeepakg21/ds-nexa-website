@@ -12,7 +12,7 @@ const projects = [
     subtitle: "High-Scale Infrastructure & AI",
     category: "Software Engineering",
     gradient: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
-    image: "/Users/deepakgupta/.gemini/antigravity/brain/b77b3cca-510c-4db3-96a2-b9c1a484a282/aquatrax_preview_1774802446625.png",
+    image: "/projects/aquatrax.png",
     problem: "Need for a high-performance, scalable tech presence with integrated AI tools.",
     solution: "End-to-end architecture design from edge runtimes to streaming pipelines and replicated data.",
     result: "Global reach with sub-50ms latency for distributed users.",
@@ -26,7 +26,7 @@ const projects = [
     subtitle: "Premium Shopify Store",
     category: "E-commerce",
     gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
-    image: "/Users/deepakgupta/.gemini/antigravity/brain/b77b3cca-510c-4db3-96a2-b9c1a484a282/shopify_premium_mockups_1774802558280.png",
+    image: "/projects/shopify_mockups.png",
     problem: "Seeking a luxury shopping experience for upscale leather goods.",
     solution: "Custom Shopify development with high-fidelity UI/UX and optimized conversion paths.",
     result: "Significant increase in average order value and luxury brand perception.",
@@ -40,7 +40,7 @@ const projects = [
     subtitle: "Luxury Fashion Hub",
     category: "Shopify / E-comm",
     gradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-    image: "/Users/deepakgupta/.gemini/antigravity/brain/b77b3cca-510c-4db3-96a2-b9c1a484a282/shopify_premium_mockups_1774802558280.png",
+    image: "/projects/shopify_mockups.png",
     problem: "High abandonment rates on generic Shopify themes.",
     solution: "Completely custom-built headless storefront for maximum speed and creative freedom.",
     result: "60% faster page loads compared to previous theme.",
@@ -54,7 +54,7 @@ const projects = [
     subtitle: "Premium Carry Essentials",
     category: "D2C Brands",
     gradient: "linear-gradient(135deg, #ec4899 0%, #db2777 100%)",
-    image: "/Users/deepakgupta/.gemini/antigravity/brain/b77b3cca-510c-4db3-96a2-b9c1a484a282/shopify_premium_mockups_1774802558280.png",
+    image: "/projects/shopify_mockups.png",
     problem: "Need for a unique brand identity in a crowded carry-goods market.",
     solution: "Art-directed e-commerce experience with custom interactions and seamless checkout.",
     result: "Rapid growth in the D2C space with loyal customer base.",
@@ -68,7 +68,7 @@ const projects = [
     subtitle: "Minimalist Product Design",
     category: "Retail Tech",
     gradient: "linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%)",
-    image: "/Users/deepakgupta/.gemini/antigravity/brain/b77b3cca-510c-4db3-96a2-b9c1a484a282/shopify_premium_mockups_1774802558280.png",
+    image: "/projects/shopify_mockups.png",
     problem: "Traditional retail UI failing to reflect minimalist product values.",
     solution: "A 'less-is-more' design philosophy implemented through custom Shopify sections.",
     result: "Perfect alignment between product design and digital storefront.",
@@ -132,13 +132,23 @@ export default function Projects() {
                 background: "var(--bg-card)",
                 backgroundImage: `url(${project.image})`,
                 backgroundSize: "cover",
-                backgroundPosition: "top center",
+                backgroundPosition: "center",
                 position: "relative",
               }}>
                 <div style={{
                   position: "absolute", inset: 0,
-                  background: "linear-gradient(to bottom, transparent 40%, rgba(15, 23, 42, 0.8) 100%)",
+                  background: "linear-gradient(to bottom, transparent 40%, rgba(15, 23, 42, 0.9) 100%)",
                 }} />
+                {/* Visual indicator for the preview button */}
+                <div style={{
+                   position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                   background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)',
+                   padding: '0.75rem 1.5rem', borderRadius: 'var(--radius-full)',
+                   fontSize: '0.8rem', fontWeight: 600, color: '#fff',
+                   opacity: 0, pointerEvents: 'none', transition: 'opacity 0.3s'
+                }} className="card-hover-indicator">
+                  View Detail
+                </div>
                 <div style={{
                   position: "absolute", bottom: 12, right: 16,
                   background: "rgba(0,0,0,0.4)",
@@ -168,7 +178,7 @@ export default function Projects() {
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.25rem" }}>
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 800, marginBottom: "0.25rem" }}>
                   {project.title}
                 </h3>
                 <p style={{
@@ -180,7 +190,7 @@ export default function Projects() {
                   {project.subtitle}
                 </p>
 
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: '1.5rem' }}>
                   {project.tech.map((t) => (
                     <span key={t} style={{
                       fontSize: "0.65rem", color: "var(--text-tertiary)",
@@ -196,9 +206,7 @@ export default function Projects() {
 
                 <div
                   style={{
-                    marginTop: "1.5rem", paddingTop: "1rem",
-                    borderTop: "1px solid var(--border-primary)",
-                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    display: "flex", alignItems: "center", gap: '1rem',
                   }}
                 >
                   <a 
@@ -206,10 +214,15 @@ export default function Projects() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     onClick={(e) => e.stopPropagation()}
-                    style={{ fontSize: "0.8rem", fontWeight: 600, textDecoration: "none" }} 
-                    className="text-gradient hover:opacity-80 transition-opacity"
+                    style={{ 
+                      fontSize: "0.85rem", fontWeight: 700, textDecoration: "none",
+                      padding: '0.6rem 1.25rem', background: 'var(--gradient-primary)',
+                      borderRadius: 'var(--radius-md)', color: '#000',
+                      flex: 1, textAlign: 'center'
+                    }} 
+                    className="hover:opacity-90 transition-opacity"
                   >
-                    Visit Project ↗
+                    Open Live Site ↗
                   </a>
                 </div>
               </div>
@@ -227,41 +240,68 @@ export default function Projects() {
             onClick={() => setSelected(null)}
             style={{
               position: "fixed", inset: 0, zIndex: 100,
-              background: "rgba(2, 6, 23, 0.9)",
-              backdropFilter: "blur(12px)",
+              background: "rgba(2, 6, 23, 0.92)",
+              backdropFilter: "blur(16px)",
               display: "flex", alignItems: "center", justifyContent: "center",
               padding: "2rem",
             }}
           >
-            {/* Modal Detail Placeholder - Keeping original logic but using project data */}
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
               style={{
-                width: "100%", maxWidth: 800, maxHeight: "90vh",
+                width: "100%", maxWidth: 850, maxHeight: "90vh",
                 background: "var(--bg-secondary)", borderRadius: "var(--radius-xl)",
                 border: "1px solid var(--border-primary)",
-                overflow: "hidden",
+                boxShadow: '0 0 50px rgba(0,0,0,0.5)',
+                overflow: "hidden", display: 'flex', flexDirection: 'column'
               }}
             >
-              <div style={{ height: 260, backgroundImage: `url(${selected.image})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
-                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, var(--bg-secondary))' }} />
-                 <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: 20, right: 20, background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', borderRadius: '50%', width: 40, height: 40, cursor: 'pointer' }}>✕</button>
+              <div style={{ height: 320, backgroundImage: `url(${selected.image})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, var(--bg-secondary))' }} />
+                 <button onClick={() => setSelected(null)} style={{ position: 'absolute', top: 20, right: 20, background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', borderRadius: '50%', width: 44, height: 44, cursor: 'pointer', zIndex: 10 }}>✕</button>
               </div>
-              <div style={{ padding: "2.5rem" }}>
-                <h2 style={{ fontSize: "2rem", fontWeight: 800 }}>{selected.title}</h2>
-                <p style={{ color: "var(--text-secondary)", marginTop: "1rem", lineHeight: 1.8 }}>{selected.problem}</p>
-                <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+              <div style={{ padding: "3rem", overflowY: 'auto' }}>
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem'}}>
                   <div>
-                    <h4 style={{ color: "var(--neon-cyan)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "2px", fontWeight: 700 }}>Our Solution</h4>
-                    <p style={{ fontSize: "0.95rem", marginTop: "0.5rem", lineHeight: 1.6 }}>{selected.solution}</p>
+                    <h2 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>{selected.title}</h2>
+                    <p style={{ color: "var(--text-secondary)", marginTop: "1rem", lineHeight: 1.8, fontSize: '1.05rem', maxWidth: 480 }}>{selected.problem}</p>
                   </div>
-                  <div style={{ background: "rgba(0, 240, 255, 0.05)", padding: "1.5rem", borderRadius: "12px" }}>
-                    <h4 style={{ color: "var(--neon-magenta)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "2px", fontWeight: 700 }}>The Impact</h4>
-                    <div style={{ fontSize: "1.5rem", fontWeight: 800 }} className="text-gradient">{selected.metrics.primary} {selected.metrics.label}</div>
-                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginTop: "0.5rem" }}>{selected.result}</p>
+                  <a 
+                    href={selected.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    style={{ 
+                      padding: '1rem 2rem', background: '#fff', color: '#000', borderRadius: 'var(--radius-full)',
+                      fontWeight: 800, fontSize: '1rem', textDecoration: 'none', whiteSpace: 'nowrap'
+                    }}
+                    className="hover:scale-105 transition-transform"
+                  >
+                    Launch Live Site ↗
+                  </a>
+                </div>
+
+                <div style={{ marginTop: "3rem", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "3rem" }}>
+                  <div>
+                    <div style={{ marginBottom: '2rem' }}>
+                      <h4 style={{ color: "var(--neon-cyan)", textTransform: "uppercase", fontSize: "0.8rem", letterSpacing: "3px", fontWeight: 800, marginBottom: '0.75rem' }}>Our Engineering Approach</h4>
+                      <p style={{ fontSize: "1rem", color: 'var(--text-primary)', lineHeight: 1.8 }}>{selected.solution}</p>
+                    </div>
+                    <div>
+                      <h4 style={{ color: "var(--text-tertiary)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "2px", fontWeight: 700, marginBottom: '1rem' }}>Technology Stack</h4>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        {selected.tech.map(t => (
+                          <span key={t} style={{ padding: '0.4rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '6px', fontSize: '0.8rem' }}>{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ background: "rgba(0, 240, 255, 0.05)", padding: "2.5rem", borderRadius: "20px", border: '1px solid rgba(0, 240, 255, 0.1)' }}>
+                    <h4 style={{ color: "var(--neon-magenta)", textTransform: "uppercase", fontSize: "0.8rem", letterSpacing: "3px", fontWeight: 800, marginBottom: '1rem' }}>Business Impact</h4>
+                    <div style={{ fontSize: "2.5rem", fontWeight: 900, marginBottom: '0.5rem' }} className="text-gradient">{selected.metrics.primary} {selected.metrics.label}</div>
+                    <p style={{ fontSize: "1rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>{selected.result}</p>
                   </div>
                 </div>
               </div>

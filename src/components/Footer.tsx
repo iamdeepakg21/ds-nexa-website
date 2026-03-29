@@ -54,20 +54,13 @@ export default function Footer() {
           gap: "3rem",
           marginBottom: "3rem",
         }} className="grid-4">
-          {/* Brand */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
-              <div style={{
-                width: 36, height: 36, borderRadius: "var(--radius-md)",
-                background: "var(--gradient-primary)", display: "flex",
-                alignItems: "center", justifyContent: "center",
-                fontWeight: 800, fontSize: "0.875rem", color: "var(--on-gradient)",
-              }}>
-                DS
-              </div>
-              <span className="font-display" style={{ fontWeight: 700, fontSize: "1.05rem", color: "var(--text-primary)", letterSpacing: "-0.02em" }}>
-                Ds Nexa Solutions
-              </span>
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "1.5rem" }}>
+              <img 
+                src="/brand/logo.png" 
+                alt="DS Nexa Solutions Logo" 
+                style={{ height: "64px", width: "auto" }} 
+              />
             </div>
             <p style={{
               fontSize: "0.875rem", color: "var(--text-secondary)",

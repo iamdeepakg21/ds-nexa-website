@@ -62,23 +62,14 @@ export default function Navbar() {
           <motion.a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-            style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none" }}
+            style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
             whileHover={{ scale: 1.02 }}
           >
-            <div style={{
-              width: 36, height: 36, borderRadius: "var(--radius-md)",
-              background: "var(--gradient-primary)", display: "flex",
-              alignItems: "center", justifyContent: "center",
-              fontWeight: 800, fontSize: "0.875rem", color: "var(--on-gradient)",
-            }}>
-              DS
-            </div>
-            <span
-              className="font-display"
-              style={{ fontWeight: 700, fontSize: "1.05rem", color: "var(--text-primary)", letterSpacing: "-0.02em" }}
-            >
-              Ds <span className="text-gradient">Nexa</span> Solutions
-            </span>
+            <img 
+              src="/brand/logo.png" 
+              alt="DS Nexa Solutions Logo" 
+              style={{ height: "48px", width: "auto" }} 
+            />
           </motion.a>
 
           {/* Desktop Links */}
