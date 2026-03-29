@@ -41,19 +41,7 @@ export default function Hero() {
       }} />
 
       <div className="container" style={{ position: "relative", zIndex: 2, textAlign: "center", paddingTop: "6rem", paddingBottom: "4rem" }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          style={{ marginBottom: "2rem" }}
-        >
-          <img 
-            src="/brand/logo.png" 
-            alt="DS Nexa Solutions Logo" 
-            className="logo-adaptive"
-            style={{ height: "100px", width: "auto", margin: "0 auto" }} 
-          />
-        </motion.div>
+
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
