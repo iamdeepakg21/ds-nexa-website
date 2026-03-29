@@ -89,9 +89,6 @@ export default function Contact() {
         </motion.div>
 
         <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "2rem",
           maxWidth: 1000,
           margin: "0 auto",
         }} className="grid-2">
