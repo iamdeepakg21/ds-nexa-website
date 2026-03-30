@@ -30,7 +30,7 @@ export default function AboutPage() {
             <div className="section-badge">Our North Star</div>
             <h1 className="heading-xl">Engineering <span className="text-gradient">Digital Universes</span></h1>
             <p className="section-subtitle" style={{ fontSize: "1.25rem", marginTop: "1.5rem" }}>
-              At DS Nexa Solutions, we don't just build websites. We engineer high-performance, immersive digital experiences that scale with your ambition.
+              DS Nexa Solutions is a **premium software consulting company** and **IT service solutions provider**. We don't just build websites; we engineer high-performance, immersive digital experiences that scale with your ambition.
             </p>
           </motion.div>
         </div>
