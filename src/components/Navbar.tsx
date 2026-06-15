@@ -1,15 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 const navLinks = [
   { label: "Services", href: "#services" },
-  { label: "Architecture", href: "#architecture-story" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#tech-stack" },
+  { label: "Work", href: "#work" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -21,24 +19,23 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const toggleTheme = () => {
-    const root = document.documentElement;
-    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-    root.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem("ds-nexa-theme", next);
-    } catch {
-      /* ignore */
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-  };
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   const scrollTo = (href: string) => {
     setMobileOpen(false);
-    
+
     if (pathname !== "/") {
       router.push("/" + href);
       return;
@@ -50,188 +47,172 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="nav-glass"
+      <nav
+        className={`nav${scrolled ? " scrolled" : ""}`}
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          padding: scrolled ? "0.75rem 0" : "1rem 0",
-          transition: "padding 0.3s ease",
-          borderBottom: scrolled
-            ? "1px solid var(--border-primary)"
-            : "1px solid transparent",
+          padding: scrolled ? "0.625rem 0" : "1rem 0",
         }}
       >
-        <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           {/* Logo */}
-          <Link
-            href="/"
-            style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
-          >
-            <motion.div whileHover={{ scale: 1.02 }}>
-              <img 
-                src="/brand/logo.png" 
-                alt="DS Nexa Solutions Logo" 
-                className="logo-adaptive"
-                style={{ height: "85px", width: "auto" }} 
-              />
-            </motion.div>
+          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+            <img
+              src="/brand/logo.png"
+              alt="DSN EXA Solutions"
+              className="logo-img"
+            />
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hide-mobile" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-            {navLinks.map((link) => (
-              <motion.button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                style={{
-                  background: "none", border: "none", cursor: "pointer",
-                  color: "var(--text-secondary)", fontSize: "0.875rem",
-                  fontWeight: 500, fontFamily: "inherit",
-                }}
-                whileHover={{ color: "var(--neon-cyan)", y: -1 }}
-                transition={{ duration: 0.2 }}
-              >
-                {link.label}
-              </motion.button>
-            ))}
+          {/* Desktop Nav Links — centered */}
+          <div
+            className="hide-mobile"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "2.25rem",
+            }}
+          >
+            {/* Services Dropdown */}
+            <div className="nav-item-dropdown">
+              <button className="nav-link" onClick={() => scrollTo("#services")}>
+                Services <span style={{ fontSize: "0.625rem", marginLeft: "2px", display: "inline-block", transform: "translateY(-1px)" }}>▼</span>
+              </button>
+              <div className="dropdown-menu">
+                <button className="dropdown-item" onClick={() => scrollTo("#services")}>
+                  <span className="dropdown-item-title">Cloud-native Engineering</span>
+                  <span className="dropdown-item-desc">High-scale cloud infrastructure</span>
+                </button>
+                <button className="dropdown-item" onClick={() => scrollTo("#services")}>
+                  <span className="dropdown-item-title">Edge Intelligence</span>
+                  <span className="dropdown-item-desc">On-device AI and smart systems</span>
+                </button>
+                <button className="dropdown-item" onClick={() => scrollTo("#services")}>
+                  <span className="dropdown-item-title">Automation & Workflows</span>
+                  <span className="dropdown-item-desc">Enterprise business integrations</span>
+                </button>
+                <button className="dropdown-item" onClick={() => scrollTo("#services")}>
+                  <span className="dropdown-item-title">Data Strategy</span>
+                  <span className="dropdown-item-desc">Pipelines, storage, and analytics</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Work */}
+            <button onClick={() => scrollTo("#work")} className="nav-link">
+              Work
+            </button>
+
+            {/* Testimonials */}
+            <button onClick={() => scrollTo("#testimonials")} className="nav-link">
+              Testimonials
+            </button>
+
+            {/* Company Dropdown */}
+            <div className="nav-item-dropdown">
+              <button className="nav-link" onClick={() => scrollTo("/about")}>
+                Company <span style={{ fontSize: "0.625rem", marginLeft: "2px", display: "inline-block", transform: "translateY(-1px)" }}>▼</span>
+              </button>
+              <div className="dropdown-menu">
+                <Link href="/about" className="dropdown-item">
+                  <span className="dropdown-item-title">About Us</span>
+                  <span className="dropdown-item-desc">Our mission and story</span>
+                </Link>
+                <Link href="/privacy" className="dropdown-item">
+                  <span className="dropdown-item-title">Privacy Policy</span>
+                  <span className="dropdown-item-desc">How we protect your data</span>
+                </Link>
+                <Link href="/terms" className="dropdown-item">
+                  <span className="dropdown-item-title">Terms & Conditions</span>
+                  <span className="dropdown-item-desc">Legal terms and use rules</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <button onClick={() => scrollTo("#contact")} className="nav-link">
+              Contact
+            </button>
           </div>
 
-          {/* Right side */}
+          {/* Right side: CTA + hamburger */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            {/* Theme Toggle */}
-            <motion.button
-              onClick={toggleTheme}
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.94 }}
-              style={{
-                width: 40, height: 40, borderRadius: "var(--radius-full)",
-                background: "var(--bg-elevated)", border: "1px solid var(--border-primary)",
-                cursor: "pointer", display: "flex", alignItems: "center",
-                justifyContent: "center", color: "var(--text-secondary)",
-                boxShadow: "var(--shadow-sm)",
-              }}
-              aria-label="Toggle color theme"
-            >
-              <span className="theme-toggle-icon theme-toggle-icon--sun" aria-hidden>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-                </svg>
-              </span>
-              <span className="theme-toggle-icon theme-toggle-icon--moon" aria-hidden>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              </span>
-            </motion.button>
-
-            {/* CTA Button */}
-            <motion.button
-              className="btn-primary hide-mobile"
+            <button
+              className="btn-outline hide-mobile"
               onClick={() => scrollTo("#contact")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               style={{ padding: "0.625rem 1.5rem", fontSize: "0.8125rem" }}
             >
-              Start Your Project
-            </motion.button>
+              Let&apos;s talk
+            </button>
 
-            {/* Mobile Hamburger */}
+            {/* Hamburger */}
             <button
-              className="hide-desktop"
+              className={`hamburger${mobileOpen ? " active" : ""}`}
               onClick={() => setMobileOpen(!mobileOpen)}
-              style={{
-                width: 40, height: 40, background: "var(--bg-card)",
-                border: "1px solid var(--border-primary)",
-                borderRadius: "var(--radius-md)", cursor: "pointer",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                flexDirection: "column", gap: "4px",
-              }}
               aria-label="Toggle mobile menu"
             >
-              <span style={{
-                width: 18, height: 2, background: "var(--text-primary)",
-                borderRadius: 2, transition: "all 0.3s",
-                transform: mobileOpen ? "rotate(45deg) translate(2px, 2px)" : "none",
-              }} />
-              <span style={{
-                width: 18, height: 2, background: "var(--text-primary)",
-                borderRadius: 2, transition: "all 0.3s",
-                opacity: mobileOpen ? 0 : 1,
-              }} />
-              <span style={{
-                width: 18, height: 2, background: "var(--text-primary)",
-                borderRadius: 2, transition: "all 0.3s",
-                transform: mobileOpen ? "rotate(-45deg) translate(2px, -2px)" : "none",
-              }} />
+              <span className="hamburger-line" />
+              <span className="hamburger-line" />
+              <span className="hamburger-line" />
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="mobile-menu-overlay hide-desktop"
-            onClick={() => setMobileOpen(false)}
+      {/* Full-screen mobile overlay */}
+      <div className={`mobile-overlay${mobileOpen ? " open" : ""}`}>
+        {navLinks.map((link, i) => (
+          <button
+            key={link.href}
+            onClick={() => scrollTo(link.href)}
+            className="mobile-menu-link"
+            style={{ transitionDelay: `${0.1 + i * 0.05}s` }}
           >
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                position: "fixed", top: 0, right: 0, width: "80%",
-                maxWidth: 320, height: "100vh",
-                background: "var(--bg-secondary)",
-                borderLeft: "1px solid var(--border-primary)",
-                padding: "6rem 2rem 2rem",
-                display: "flex", flexDirection: "column", gap: "0.5rem",
-              }}
-            >
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ x: 20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 + i * 0.05 }}
-                  onClick={() => scrollTo(link.href)}
-                  style={{
-                    background: "none", border: "none", cursor: "pointer",
-                    color: "var(--text-primary)", fontSize: "1.125rem",
-                    fontWeight: 500, fontFamily: "inherit", padding: "0.75rem 0",
-                    textAlign: "left", borderBottom: "1px solid var(--border-primary)",
-                  }}
-                >
-                  {link.label}
-                </motion.button>
-              ))}
-              <motion.button
-                className="btn-primary"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                onClick={() => scrollTo("#contact")}
-                style={{ marginTop: "1rem", justifyContent: "center" }}
-              >
-                Start Your Project
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {link.label}
+          </button>
+        ))}
+
+        <div style={{ width: "40px", height: "1.5px", background: "var(--color-border)", margin: "0.5rem 0" }} />
+
+        <Link
+          href="/about"
+          className="mobile-menu-link"
+          style={{ fontSize: "1.25rem", color: "var(--color-text-secondary)", transitionDelay: `${0.1 + navLinks.length * 0.05}s` }}
+          onClick={() => setMobileOpen(false)}
+        >
+          About Us
+        </Link>
+        <Link
+          href="/privacy"
+          className="mobile-menu-link"
+          style={{ fontSize: "1.25rem", color: "var(--color-text-secondary)", transitionDelay: `${0.1 + (navLinks.length + 1) * 0.05}s` }}
+          onClick={() => setMobileOpen(false)}
+        >
+          Privacy Policy
+        </Link>
+        <Link
+          href="/terms"
+          className="mobile-menu-link"
+          style={{ fontSize: "1.25rem", color: "var(--color-text-secondary)", transitionDelay: `${0.1 + (navLinks.length + 2) * 0.05}s` }}
+          onClick={() => setMobileOpen(false)}
+        >
+          Terms & Conditions
+        </Link>
+
+        <button
+          onClick={() => scrollTo("#contact")}
+          className="mobile-menu-link"
+          style={{ color: "var(--color-accent)", marginTop: "1rem", transitionDelay: `${0.1 + (navLinks.length + 3) * 0.05}s` }}
+        >
+          Let&apos;s talk →
+        </button>
+      </div>
     </>
   );
 }

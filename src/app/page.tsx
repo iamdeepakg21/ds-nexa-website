@@ -1,38 +1,24 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Projects from "@/components/Projects";
-import TechStack from "@/components/TechStack";
+import Showcase from "@/components/Showcase";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
-const CursorGlow = dynamic(() => import("@/components/CursorGlow"), { ssr: false });
-import Hero from "@/components/Hero";
-
-function SectionRule() {
-  return <hr className="glow-line" />;
-}
+import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
   return (
     <>
-      <CursorGlow />
+      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
-
-        <SectionRule />
         <Services />
-
-        <SectionRule />
-        <Projects />
-
-        <SectionRule />
-        <TechStack />
-
-        <SectionRule />
+        <Showcase />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />

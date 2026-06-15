@@ -1,132 +1,141 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useState, useEffect, useRef, useCallback } from "react";
+
+/**
+ * Testimonials — Two featured quotes side by side, manual prev/next arrows.
+ * Large amber decorative quote marks. Diagonal lines background pattern.
+ * Smooth crossfade transition between quote pairs.
+ */
 
 const testimonials = [
   {
-    quote: "The TeleMed Pro app completely transformed how we connect doctors and patients. DS Nexa delivered in 5 weeks what others quoted 4 months for.",
-    role: "Founder, Telemedicine Startup",
-    project: "TeleMed Pro",
-    rating: 5,
+    quote: "DSN EXA didn't just build our platform — they architected our competitive advantage. The system handles 10x our projected load without blinking.",
+    name: "Alex Rivera",
+    role: "CTO, Lumina",
   },
   {
-    quote: "Their AI chatbot single-handedly saved us ₹18 lakhs in support costs in the first month.",
-    role: "E-commerce Brand Owner",
-    project: "Shopify AI Assistant",
-    rating: 5,
+    quote: "From concept to production in 5 weeks. Their edge intelligence solution cut our inference latency from 800ms to under 12ms. Genuinely transformative.",
+    name: "Samira K.",
+    role: "Product Lead, NexaCore",
   },
   {
-    quote: "Deepak & Satyam didn't just build software — they built our competitive edge.",
-    role: "SaaS Founder",
-    project: "NexaFlow",
-    rating: 5,
+    quote: "The automation system gave us back 25 hours every week. What used to require a team of three now runs on autopilot.",
+    name: "Marcus Chen",
+    role: "Operations Head, Vertex",
   },
   {
-    quote: "The automation system gave us back 25 hours every week. Game changer.",
-    role: "Operations Head, Growing Startup",
-    project: "NexaFlow",
-    rating: 5,
-  },
-  {
-    quote: "Best development team we've ever worked with. Period.",
-    role: "Healthcare Clinic Owner",
-    project: "HealthSync",
-    rating: 5,
-  },
-  {
-    quote: "From idea to revenue-generating product in under 7 weeks. Unreal.",
-    role: "Education Tech Founder",
-    project: "EduPulse",
-    rating: 5,
+    quote: "Best engineering team we've ever worked with. Period. They think in systems, not features — and that makes all the difference.",
+    name: "Priya Sharma",
+    role: "Founder, HealthSync",
   },
 ];
 
 export default function Testimonials() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [pairIndex, setPairIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const totalPairs = Math.ceil(testimonials.length / 2);
+
+  const navigate = useCallback((dir: number) => {
+    setFade(false);
+    setTimeout(() => {
+      setPairIndex((prev) => (prev + dir + totalPairs) % totalPairs);
+      setFade(true);
+    }, 250);
+  }, [totalPairs]);
+
+  const currentPair = testimonials.slice(pairIndex * 2, pairIndex * 2 + 2);
+
+  useEffect(() => {
+    const elements = sectionRef.current?.querySelectorAll(".reveal");
+    if (!elements) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="section" ref={ref} style={{ position: "relative" }}>
-      <div className="blob blob-purple" style={{ width: 400, height: 400, top: "20%", left: "-10%" }} />
-
+    <section
+      id="testimonials"
+      className="section diagonal-lines"
+      ref={sectionRef}
+      style={{ position: "relative" }}
+    >
       <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="section-badge">💬 Testimonials</div>
-          <h2 className="section-title">
-            Real Results from <span className="text-gradient">Real Builders</span>
+        {/* Header */}
+        <div className="reveal delay-1" style={{ marginBottom: "var(--gap-xl)" }}>
+          <span className="section-label">Testimonials</span>
+          <h2 className="heading-lg">
+            Trusted by
+            <br />
+            <span className="text-accent">builders.</span>
           </h2>
-          <p className="section-subtitle">
-            Don&apos;t take our word for it — hear from the founders & teams we&apos;ve worked with.
-          </p>
-        </motion.div>
+        </div>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-          gap: "1.25rem",
-          maxWidth: 1100,
-          margin: "0 auto",
-        }}>
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              whileHover={{ y: -4, borderColor: "rgba(0, 240, 255, 0.2)" }}
-              className="glass-card testimonial-card"
-            >
-              {/* Stars */}
-              <div style={{ display: "flex", gap: "0.125rem", marginBottom: "1rem", marginTop: "1rem" }}>
-                {Array.from({ length: t.rating }).map((_, j) => (
-                  <span key={j} style={{ fontSize: "0.875rem", color: "#fbbf24" }}>★</span>
-                ))}
+        {/* Quotes grid */}
+        <div
+          className="testimonial-grid reveal delay-2"
+          style={{
+            opacity: fade ? 1 : 0,
+            transform: fade ? "translateY(0)" : "translateY(8px)",
+            transition: "opacity 0.3s ease, transform 0.3s ease",
+          }}
+        >
+          {currentPair.map((t, i) => (
+            <div key={`${pairIndex}-${i}`} className="testimonial-card">
+              <span className="testimonial-quote-mark">&ldquo;</span>
+              <p className="testimonial-text">&ldquo;{t.quote}&rdquo;</p>
+              <div className="testimonial-author">
+                <span className="testimonial-name">{t.name}</span>
+                <span className="testimonial-role">{t.role}</span>
               </div>
-
-              <p style={{
-                fontSize: "0.9375rem",
-                color: "var(--text-primary)",
-                lineHeight: 1.7,
-                fontStyle: "italic",
-                marginBottom: "1.25rem",
-              }}>
-                &ldquo;{t.quote}&rdquo;
-              </p>
-
-              <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between",
-                paddingTop: "1rem",
-                borderTop: "1px solid var(--border-primary)",
-              }}>
-                <div>
-                  <div style={{
-                    fontSize: "0.8125rem",
-                    fontWeight: 500,
-                    color: "var(--text-secondary)",
-                  }}>
-                    — {t.role}
-                  </div>
-                </div>
-                <span style={{
-                  fontSize: "0.6875rem",
-                  padding: "0.25rem 0.625rem",
-                  borderRadius: "var(--radius-full)",
-                  background: "var(--gradient-glow)",
-                  border: "1px solid var(--border-glow)",
-                  color: "var(--neon-cyan)",
-                  fontWeight: 500,
-                }}>
-                  {t.project}
-                </span>
-              </div>
-            </motion.div>
+            </div>
           ))}
         </div>
+
+        {/* Navigation arrows */}
+        {totalPairs > 1 && (
+          <div className="testimonial-nav reveal delay-3">
+            <button
+              className="testimonial-nav-btn"
+              onClick={() => navigate(-1)}
+              aria-label="Previous testimonials"
+            >
+              ←
+            </button>
+            <button
+              className="testimonial-nav-btn"
+              onClick={() => navigate(1)}
+              aria-label="Next testimonials"
+            >
+              →
+            </button>
+            <span
+              style={{
+                marginLeft: "var(--gap-sm)",
+                fontSize: "0.8125rem",
+                color: "var(--color-text-muted)",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {pairIndex + 1} / {totalPairs}
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );

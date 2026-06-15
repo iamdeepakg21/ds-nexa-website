@@ -1,5 +1,5 @@
-// DS Nexa Solutions - Premium Engineering Platform
-import type { Metadata, Viewport } from "next";
+// DSN EXA Solutions — Premium Engineering Platform
+import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import "./globals.css";
@@ -19,39 +19,37 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dsnexasolutions.co.in"),
   title: {
-    default: "Ds Nexa Solutions | Engineering Scalable Digital Universes",
-    template: "%s | Ds Nexa Solutions",
+    default: "DSN EXA Solutions | System Architecture · AI Integration · Digital Transformation",
+    template: "%s | DSN EXA Solutions",
   },
   description:
-    "Premium software studio specializing in high-scale distributed systems, AI integrations, custom Shopify apps, and immersive product engineering. We build for the future with Next.js, Go, and cloud-native architecture.",
+    "Premium engineering studio specializing in cloud-native architecture, edge intelligence, AI integration, and digital transformation. We build systems that scale.",
   keywords: [
     "software development India",
     "software consulting company",
-    "IT service solutions",
-    "enterprise software development",
-    "digital transformation services",
-    "custom software engineering",
-    "Shopify experts India",
-    "business automation consulting",
-    "AI development agency",
-    "full-stack development studio",
-    "Next.js consulting",
-    "SaaS product engineering",
-    "DS Nexa Solutions",
-    "software solutions Noida",
+    "cloud-native engineering",
+    "edge intelligence",
+    "AI integration",
+    "digital transformation",
+    "system architecture",
+    "data strategy",
+    "automation workflows",
+    "DSN EXA Solutions",
+    "enterprise software",
+    "SaaS engineering",
   ],
-  authors: [{ name: "Ds Nexa Solutions", url: "https://dsnexasolutions.co.in" }],
-  creator: "Ds Nexa Solutions",
-  publisher: "Ds Nexa Solutions",
+  authors: [{ name: "DSN EXA Solutions", url: "https://dsnexasolutions.co.in" }],
+  creator: "DSN EXA Solutions",
+  publisher: "DSN EXA Solutions",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Ds Nexa Solutions | Engineering Scalable Digital Universes",
+    title: "DSN EXA Solutions | System Architecture · AI Integration · Digital Transformation",
     description:
-      "Premium software studio — high-scale distributed systems, AI integrations, and immersive product engineering.",
+      "Premium engineering studio — cloud-native architecture, edge intelligence, and AI integration.",
     url: "https://dsnexasolutions.co.in",
-    siteName: "Ds Nexa Solutions",
+    siteName: "DSN EXA Solutions",
     locale: "en_US",
     type: "website",
     images: [
@@ -59,15 +57,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ds Nexa Solutions Branding",
+        alt: "DSN EXA Solutions Branding",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ds Nexa Solutions | Engineering Scalable Digital Universes",
+    title: "DSN EXA Solutions | System Architecture · AI Integration · Digital Transformation",
     description:
-      "Premium software studio — high-scale distributed systems, AI integrations, and immersive product engineering.",
+      "Premium engineering studio — cloud-native architecture, edge intelligence, and AI integration.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -94,14 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var k='ds-nexa-theme';var s=localStorage.getItem(k);if(s==='light'||s==='dark')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();`,
-          }}
-        />
-      </head>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
         <JsonLd />
         {children}
