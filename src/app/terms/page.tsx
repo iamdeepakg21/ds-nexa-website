@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 const termSections = [
   {
     title: "1. Acceptance of Terms",
-    content: "By engaging with DS Nexa Solutions or using our website, you agree to these terms. We keep things simple: we provide high-end engineering, and you agree to use our services and site responsibly. These terms are a binding agreement between you and DS Nexa Solutions."
+    content: "By engaging with DsNexa Solutions or using our website, you agree to these terms. We keep things simple: we provide high-end engineering, and you agree to use our services and site responsibly. These terms are a binding agreement between you and DsNexa Solutions."
   },
   {
     title: "2. Our Services",
@@ -24,7 +24,7 @@ const termSections = [
   },
   {
     title: "5. Limitation of Liability",
-    content: "While we build for 'Planet Scale' and follow extreme engineering rigors, software is complex. DS Nexa Solutions is not liable for indirect, incidental, or consequential damages resulting from the use of our services beyond the amount paid for the specific project."
+    content: "While we build for 'Planet Scale' and follow extreme engineering rigors, software is complex. DsNexa Solutions is not liable for indirect, incidental, or consequential damages resulting from the use of our services beyond the amount paid for the specific project."
   },
   {
     title: "6. Zero-Harassment Policy",

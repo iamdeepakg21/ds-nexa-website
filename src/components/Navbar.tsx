@@ -65,7 +65,7 @@ export default function Navbar() {
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
             <img
               src="/brand/logo.png"
-              alt="DSN EXA Solutions"
+              alt="DsNexa Solutions"
               className="logo-img"
             />
           </Link>

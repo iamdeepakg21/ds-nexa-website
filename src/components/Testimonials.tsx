@@ -10,7 +10,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 const testimonials = [
   {
-    quote: "DSN EXA didn't just build our platform — they architected our competitive advantage. The system handles 10x our projected load without blinking.",
+    quote: "DSNexa didn't just build our platform — they architected our competitive advantage. The system handles 10x our projected load without blinking.",
     name: "Alex Rivera",
     role: "CTO, Lumina",
   },

@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 const sections = [
   {
     title: "1. Transparency First",
-    content: "We value your privacy as much as our own code. At DS Nexa Solutions, we believe in radical transparency. We don't sell your data, we don't 'rent' your attention, and we don't track you across the web. We build software; we don't harvest humans."
+    content: "We value your privacy as much as our own code. At DsNexa Solutions, we believe in radical transparency. We don't sell your data, we don't 'rent' your attention, and we don't track you across the web. We build software; we don't harvest humans."
   },
   {
     title: "2. Data We Collect",

@@ -30,7 +30,7 @@ export default function AboutPage() {
             <div className="section-badge">Our North Star</div>
             <h1 className="heading-xl">Engineering <span className="text-gradient">Digital Universes</span></h1>
             <p className="section-subtitle" style={{ fontSize: "1.25rem", marginTop: "1.5rem" }}>
-              DS Nexa Solutions is a **premium software consulting company** and **IT service solutions provider**. We don't just build websites; we engineer high-performance, immersive digital experiences that scale with your ambition.
+              DsNexa Solutions is a **premium software consulting company** and **IT service solutions provider**. We don't just build websites; we engineer high-performance, immersive digital experiences that scale with your ambition.
             </p>
           </motion.div>
         </div>
@@ -48,7 +48,7 @@ export default function AboutPage() {
             >
               <h2 className="heading-lg" style={{ marginBottom: "1.5rem" }}>The <span className="text-gradient">Craft</span> of Scale</h2>
               <p style={{ fontSize: "1.1rem", color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-                Founded with a mission to bridge the gap between heavy-duty engineering and premium product design, DS Nexa Solutions was built on three core pillars: **Performance, Scalability, and Global Excellence.**
+                Founded with a mission to bridge the gap between heavy-duty engineering and premium product design, DsNexa Solutions was built on three core pillars: **Performance, Scalability, and Global Excellence.**
               </p>
               <p style={{ fontSize: "1.1rem", color: "var(--text-secondary)", lineHeight: 1.8 }}>
                 Based in India and serving a global clientele, we've delivered 50+ projects ranging from complex Shopify ecosystems to AI-driven automation pipelines. We believe every byte of code should move the needle for your business.

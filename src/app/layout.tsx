@@ -1,4 +1,4 @@
-// DSN EXA Solutions — Premium Engineering Platform
+// DsNexa Solutions — Premium Engineering Platform
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
@@ -19,8 +19,8 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dsnexasolutions.co.in"),
   title: {
-    default: "DSN EXA Solutions | System Architecture · AI Integration · Digital Transformation",
-    template: "%s | DSN EXA Solutions",
+    default: "DsNexa Solutions | System Architecture · AI Integration · Digital Transformation",
+    template: "%s | DsNexa Solutions",
   },
   description:
     "Premium engineering studio specializing in cloud-native architecture, edge intelligence, AI integration, and digital transformation. We build systems that scale.",
@@ -34,22 +34,22 @@ export const metadata: Metadata = {
     "system architecture",
     "data strategy",
     "automation workflows",
-    "DSN EXA Solutions",
+    "DsNexa Solutions",
     "enterprise software",
     "SaaS engineering",
   ],
-  authors: [{ name: "DSN EXA Solutions", url: "https://dsnexasolutions.co.in" }],
-  creator: "DSN EXA Solutions",
-  publisher: "DSN EXA Solutions",
+  authors: [{ name: "DsNexa Solutions", url: "https://dsnexasolutions.co.in" }],
+  creator: "DsNexa Solutions",
+  publisher: "DsNexa Solutions",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "DSN EXA Solutions | System Architecture · AI Integration · Digital Transformation",
+    title: "DsNexa Solutions | System Architecture · AI Integration · Digital Transformation",
     description:
       "Premium engineering studio — cloud-native architecture, edge intelligence, and AI integration.",
     url: "https://dsnexasolutions.co.in",
-    siteName: "DSN EXA Solutions",
+    siteName: "DsNexa Solutions",
     locale: "en_US",
     type: "website",
     images: [
@@ -57,13 +57,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DSN EXA Solutions Branding",
+        alt: "DsNexa Solutions Branding",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DSN EXA Solutions | System Architecture · AI Integration · Digital Transformation",
+    title: "DsNexa Solutions | System Architecture · AI Integration · Digital Transformation",
     description:
       "Premium engineering studio — cloud-native architecture, edge intelligence, and AI integration.",
     images: ["/og-image.png"],

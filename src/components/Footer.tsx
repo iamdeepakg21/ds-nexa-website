@@ -55,7 +55,7 @@ export default function Footer() {
             <Link href="/" style={{ display: "inline-block", width: "fit-content", marginBottom: "var(--gap-md)" }}>
               <img
                 src="/brand/logo.png"
-                alt="DSN EXA Solutions"
+                alt="DsNexa Solutions"
                 className="logo-img"
               />
             </Link>
@@ -147,7 +147,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="footer-bottom">
           <p className="footer-copy">
-            © {new Date().getFullYear()} DSN EXA Solutions
+            © {new Date().getFullYear()} DsNexa Solutions
           </p>
           <div className="footer-bottom-links">
             <Link href="/privacy" className="footer-link">

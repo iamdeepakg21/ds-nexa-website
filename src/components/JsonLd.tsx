@@ -6,8 +6,8 @@ export default function JsonLd() {
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Ds Nexa Solutions",
-    "alternateName": "DS Nexa",
+    "name": "DsNexa Solutions",
+    "alternateName": "DsNexa",
     "url": "https://dsnexasolutions.co.in",
     "logo": "https://dsnexasolutions.co.in/brand/logo.png",
     "description": "Premium software studio specializing in high-scale distributed systems, AI integrations, custom Shopify apps, and immersive product engineering.",
@@ -22,7 +22,7 @@ export default function JsonLd() {
     },
     "founder": {
       "@type": "Organization",
-      "name": "Ds Nexa Solutions"
+      "name": "DsNexa Solutions"
     },
     "sameAs": [
       "https://github.com/iamdeepakg21", // Based on user's GitHub username in deployment logs

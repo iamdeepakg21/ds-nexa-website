@@ -83,7 +83,7 @@ export default function Contact() {
           project: form.project,
           subject: `New inquiry from ${form.name} (${form.project || "General Inquiry"})`,
           message: form.message,
-          from_name: "DSN EXA Website",
+          from_name: "DsNexa Website",
         }),
       });
 
