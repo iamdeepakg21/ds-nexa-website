@@ -31,6 +31,16 @@ const contactInfo = [
     ),
   },
   {
+    label: "Phone",
+    value: "+91 77048 87884",
+    href: "tel:+917704887884",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.86 19.86 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+      </svg>
+    ),
+  },
+  {
     label: "Location",
     value: "Noida, Uttar Pradesh, India",
     href: "https://maps.google.com/?q=Advant+Navis+Business+Park+Sector+142+Noida",
@@ -45,12 +55,12 @@ const contactInfo = [
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", project: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -70,7 +80,8 @@ export default function Contact() {
           access_key: "8514f7b9-80b0-489f-9680-ff59ff8d6215",
           name: form.name,
           email: form.email,
-          subject: `New inquiry from ${form.name}`,
+          project: form.project,
+          subject: `New inquiry from ${form.name} (${form.project || "General Inquiry"})`,
           message: form.message,
           from_name: "DSN EXA Website",
         }),
@@ -80,7 +91,7 @@ export default function Contact() {
 
       if (result.success) {
         setSubmitted(true);
-        setForm({ name: "", email: "", message: "" });
+        setForm({ name: "", email: "", project: "", message: "" });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         setError(result.message || "Something went wrong. Please try again.");
@@ -191,6 +202,62 @@ export default function Contact() {
 
             <div>
               <label
+                htmlFor="contact-project"
+                style={{
+                  display: "block",
+                  fontSize: "0.8125rem",
+                  fontWeight: 500,
+                  color: "var(--color-text-secondary)",
+                  marginBottom: "0.375rem",
+                }}
+              >
+                What product do you want to build?
+              </label>
+              <select
+                id="contact-project"
+                name="project"
+                value={form.project}
+                onChange={handleChange}
+                className="input"
+                required
+                style={{
+                  appearance: "none",
+                  cursor: "pointer",
+                  backgroundImage: `url("data:image/svg+xml;utf8,<svg fill='%23FFB347' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "calc(100% - 12px) 50%",
+                  paddingRight: "2.5rem",
+                }}
+              >
+                <option value="" disabled style={{ background: "var(--color-card)", color: "var(--color-text-muted)" }}>
+                  Select a product / project type...
+                </option>
+                <option value="Shopify Development" style={{ background: "var(--color-card)", color: "var(--color-text)" }}>
+                  Shopify Development
+                </option>
+                <option value="WordPress Development" style={{ background: "var(--color-card)", color: "var(--color-text)" }}>
+                  WordPress Development
+                </option>
+                <option value="Full-Stack Web App" style={{ background: "var(--color-card)", color: "var(--color-text)" }}>
+                  Full-Stack Web App
+                </option>
+                <option value="Mobile App" style={{ background: "var(--color-card)", color: "var(--color-text)" }}>
+                  Mobile App
+                </option>
+                <option value="AI Integration" style={{ background: "var(--color-card)", color: "var(--color-text)" }}>
+                  AI Integration
+                </option>
+                <option value="Business Automation" style={{ background: "var(--color-card)", color: "var(--color-text)" }}>
+                  Business Automation
+                </option>
+                <option value="Other" style={{ background: "var(--color-card)", color: "var(--color-text)" }}>
+                  Other
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label
                 htmlFor="contact-message"
                 style={{
                   display: "block",
@@ -261,7 +328,7 @@ export default function Contact() {
           <div className="reveal delay-3" style={{ display: "flex", flexDirection: "column", gap: "var(--gap-md)", paddingTop: "1.5rem" }}>
             {contactInfo.map((c) => (
               <a
-                key={c.label}
+                key={c.value}
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}

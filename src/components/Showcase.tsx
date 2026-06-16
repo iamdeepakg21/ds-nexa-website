@@ -20,6 +20,16 @@ const projects = [
     tech: ["Next.js", "Node.js", "Go", "Docker"],
   },
   {
+    id: 6,
+    title: "SafarWithAman",
+    desc: "Curated travel booking platform for premium Himalayan expeditions and signature tours.",
+    category: "Travel Curation",
+    image: "/projects/safarwithaman.png",
+    url: "https://safarwithaman.com",
+    gradient: "linear-gradient(135deg, #3a2e1a 0%, #221a0d 100%)",
+    tech: ["Next.js", "React", "Tailwind CSS", "MongoDB"],
+  },
+  {
     id: 2,
     title: "Tanntrim",
     desc: "Premium leather goods store with luxury UI/UX and optimized conversion.",
@@ -58,16 +68,6 @@ const projects = [
     url: "https://slant.co.in/",
     gradient: "linear-gradient(135deg, #1a3a2a 0%, #0d2a1a 100%)",
     tech: ["Shopify", "Custom Sections"],
-  },
-  {
-    id: 6,
-    title: "SafarWithAman",
-    desc: "Curated travel booking platform for premium Himalayan expeditions and signature tours.",
-    category: "Travel Curation",
-    image: "/projects/safarwithaman.png",
-    url: "https://safarwithaman.com",
-    gradient: "linear-gradient(135deg, #3a2e1a 0%, #221a0d 100%)",
-    tech: ["Next.js", "React", "Tailwind CSS", "MongoDB"],
   },
 ];
 

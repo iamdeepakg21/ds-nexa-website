@@ -51,27 +51,20 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           {/* Column 1: Brand */}
-          <div>
-            <img
-              src="/brand/logo.png"
-              alt="DSN EXA Solutions"
-              className="logo-img"
-              style={{ marginBottom: "var(--gap-md)" }}
-            />
-            <p
-              style={{
-                fontSize: "0.875rem",
-                color: "var(--color-text-secondary)",
-                lineHeight: 1.7,
-                maxWidth: 280,
-                marginBottom: "var(--gap-md)",
-              }}
-            >
+          <div className="footer-brand-col">
+            <Link href="/" style={{ display: "inline-block", width: "fit-content", marginBottom: "var(--gap-md)" }}>
+              <img
+                src="/brand/logo.png"
+                alt="DSN EXA Solutions"
+                className="logo-img"
+              />
+            </Link>
+            <p className="footer-brand-desc">
               System architecture · AI integration · Digital transformation. Engineering premium solutions for ambitious teams.
             </p>
 
             {/* Social icons */}
-            <div style={{ display: "flex", gap: "0.625rem" }}>
+            <div className="footer-socials">
               {/* GitHub */}
               <a
                 href="https://github.com/iamdeepakg21"
@@ -114,9 +107,9 @@ export default function Footer() {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <div className="footer-links-col">
             <h4 className="footer-heading">Quick Links</h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+            <div className="footer-links-list">
               {quickLinks.map((link) => (
                 <button
                   key={link.label}
@@ -130,16 +123,9 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Newsletter */}
-          <div>
+          <div className="footer-newsletter-col">
             <h4 className="footer-heading">Stay Updated</h4>
-            <p
-              style={{
-                fontSize: "0.875rem",
-                color: "var(--color-text-secondary)",
-                lineHeight: 1.6,
-                marginBottom: "var(--gap-md)",
-              }}
-            >
+            <p className="footer-newsletter-desc">
               Engineering insights, project updates, and new service announcements. No spam.
             </p>
             <form onSubmit={handleNewsletter} className="newsletter-form">
@@ -159,21 +145,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div
-          style={{
-            borderTop: "1px solid var(--color-border-subtle)",
-            paddingTop: "var(--gap-md)",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "var(--gap-sm)",
-          }}
-        >
-          <p style={{ fontSize: "0.8125rem", color: "var(--color-text-muted)" }}>
+        <div className="footer-bottom">
+          <p className="footer-copy">
             © {new Date().getFullYear()} DSN EXA Solutions
           </p>
-          <div style={{ display: "flex", gap: "var(--gap-md)" }}>
+          <div className="footer-bottom-links">
             <Link href="/privacy" className="footer-link">
               Privacy
             </Link>
